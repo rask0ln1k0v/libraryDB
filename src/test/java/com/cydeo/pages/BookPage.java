@@ -12,6 +12,10 @@ public class BookPage extends BasePage {
     @FindBy(xpath = "//table/tbody/tr")
     public List<WebElement> allRows;
 
+
+    @FindBy(xpath = "//tbody//tr//td[.='09112021']/..")
+    public List<WebElement> cleanCodeRow;
+
     @FindBy(xpath = "//input[@type='search']")
     public WebElement search;
 

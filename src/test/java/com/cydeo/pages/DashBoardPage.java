@@ -8,6 +8,8 @@ import org.openqa.selenium.support.FindBy;
 public class DashBoardPage extends BasePage
 {
 
+    @FindBy(xpath = "//span[.='Books']")
+    public WebElement booksTab;
 
     @FindBy(id = "borrowed_books")
     public WebElement borrowedBooksNumber;

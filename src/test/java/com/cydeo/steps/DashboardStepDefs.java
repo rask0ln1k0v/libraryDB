@@ -3,8 +3,11 @@ package com.cydeo.steps;
 import com.cydeo.pages.DashBoardPage;
 import com.cydeo.pages.LoginPage;
 import com.cydeo.utility.BrowserUtil;
+import com.cydeo.utility.DB_Util;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 public class DashboardStepDefs
 {
@@ -40,4 +43,23 @@ public class DashboardStepDefs
 
     }
 
+    @Then("the informations should be same with database")
+    public void theInformationsShouldBeSameWithDatabase() {
+
+        //get all information from UI -> we already have it
+        //get all data from DB
+                //first connect DB
+//        DB_Util.createConnection(); we don't need this step since we added it to Hooks.
+
+                //run query
+        DB_Util.runQuery("select count(*) from users");
+                //get related data
+        String expectedCount = DB_Util.getFirstRowFirstColumn(); //this is expected because we didn't add anything to UI
+                //close connection
+//            DB_Util.destroy(); we have this at hooks. it runs automatically with the tagname
+        //make comparison
+        Assert.assertEquals(expectedCount,actualUserNumbers);
+
+
+    }
 }
